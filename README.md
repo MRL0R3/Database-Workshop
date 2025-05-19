@@ -63,8 +63,6 @@ View the data again to confirm your updates have taken effect.
 * Delete **Jude Bellingham** from the `players` table
 * Delete **Liverpool** from the `clubs` table (ensure foreign key constraints are handled)
 
----
-
 ### 🔍 Step 8: Final Select
 
 Perform one last SELECT on both tables to view the final state of your database.
@@ -93,12 +91,3 @@ By the end of this assignment, you should be confident in:
 Feel free to open an issue or ask during the workshop!
 
 Happy Coding! 🚀
-
-```
-If you want, I can also:
-- Generate the actual SQL table creation code.
-- Provide a sample implementation for `db_manager.py`, `player.py`, and `club.py`.
-- Help turn this into an interactive Jupyter notebook version for students to follow.
-
-Just let me know how far you want to go with it!
-```
