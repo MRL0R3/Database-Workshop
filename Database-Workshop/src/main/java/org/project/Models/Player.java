@@ -5,13 +5,11 @@ import java.util.UUID;
 public class Player {
     private UUID id;
     private String fullName;
-    private String skinColor;
     private UUID clubId;
 
-    public Player(UUID id, String fullName, String skinColor, UUID clubId) {
+    public Player(UUID id, String fullName, UUID clubId) {
         this.id = id;
         this.fullName = fullName;
-        this.skinColor = skinColor;
         this.clubId = clubId;
     }
 
@@ -29,14 +27,6 @@ public class Player {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getSkinColor() {
-        return skinColor;
-    }
-
-    public void setSkinColor(String skinColor) {
-        this.skinColor = skinColor;
     }
 
     public UUID getClubId() {
