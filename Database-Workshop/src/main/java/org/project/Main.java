@@ -45,7 +45,14 @@ public class Main {
 
         DatabaseManager.playerViewer();
 
+        //❌ Step 7: Delete Data
+        DatabaseManager.deleteRecords();
 
+
+        //🔍 Step 8: final Again
+        DatabaseManager.clubViewer();
+
+        DatabaseManager.playerViewer();
 
 
     }

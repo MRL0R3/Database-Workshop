@@ -114,5 +114,16 @@ public class DatabaseManager {
         }
     }
 
-
+    public static void deleteRecords() {
+        try (Connection conn = connect();
+             PreparedStatement deletePlayer = conn.prepareStatement("DELETE FROM players WHERE fullName = 'Jude Bellingham'");
+             PreparedStatement deleteClub = conn.prepareStatement("DELETE FROM clubs WHERE title = 'Liverpool'");) {
+            deletePlayer.executeUpdate();
+            deleteClub.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
