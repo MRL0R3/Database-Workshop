@@ -31,27 +31,28 @@ public class Main {
         // todo: call methods to run queries
 
         //🔍 Step 4: Select and View Data
+        System.out.println("View the inserted data");
         DatabaseManager.clubViewer();
-
         DatabaseManager.playerViewer();
+        System.out.println();
 
 
-        //🔁 Step 5: Update Records
+
+        //🔁 Step 5: Update
         DatabaseManager.updateRecords();
-
-
         //🔍 Step 6: Select Again
+        System.out.println("View the Updated data");
         DatabaseManager.clubViewer();
-
         DatabaseManager.playerViewer();
+        System.out.println();
+
+
 
         //❌ Step 7: Delete Data
         DatabaseManager.deleteRecords();
-
-
         //🔍 Step 8: final Again
+        
         DatabaseManager.clubViewer();
-
         DatabaseManager.playerViewer();
 
 

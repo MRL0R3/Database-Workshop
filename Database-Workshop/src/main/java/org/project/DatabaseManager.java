@@ -38,7 +38,7 @@ public class DatabaseManager {
             ps.close();
             conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
     }
         public static void createPlayer(Player player) throws SQLException, ClassNotFoundException {
@@ -59,7 +59,7 @@ public class DatabaseManager {
             ps.close();
             conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
 
     }
@@ -77,7 +77,7 @@ public class DatabaseManager {
         var rs = st.executeQuery("SELECT * FROM club");
         System.out.println("--- Clubs ---");
         while (rs.next()) {
-            System.out.printf("%s | %s | %s\n", rs.getObject("id"),
+            System.out.printf("%-30s | %-20s | %-30s\n", rs.getObject("id"),
                     rs.getString("title"),
                     rs.getString("manager"));
         }
@@ -92,7 +92,7 @@ public class DatabaseManager {
         var rs = st.executeQuery("SELECT * FROM player");
         System.out.println("--- Players ---");
         while (rs.next()) {
-            System.out.printf("%s | %s | %s\n", rs.getObject("id"),
+            System.out.printf("%-30s | %-25s | %-30s\n", rs.getObject("id"),
                     rs.getString("full_name"),
                     rs.getObject("club_id"));
         }
@@ -105,23 +105,23 @@ public class DatabaseManager {
 
     public static void updateRecords() {
         try (Connection conn = connect();
-             PreparedStatement pstmt1 = conn.prepareStatement("UPDATE players SET clubId = (SELECT id FROM clubs WHERE title = 'Real Madrid') WHERE fullName = 'Alexander-Arnold'");
-             PreparedStatement pstmt2 = conn.prepareStatement("UPDATE clubs SET manager = 'Alonso' WHERE title = 'Real Madrid'");) {
+             PreparedStatement pstmt1 = conn.prepareStatement("UPDATE player SET clubId = (SELECT id FROM clubs WHERE title = 'Real Madrid') WHERE fullName = 'Alexander-Arnold'");
+             PreparedStatement pstmt2 = conn.prepareStatement("UPDATE club SET manager = 'Alonso' WHERE title = 'Real Madrid'");) {
             pstmt1.executeUpdate();
             pstmt2.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+
         }
     }
 
     public static void deleteRecords() {
         try (Connection conn = connect();
-             PreparedStatement deletePlayer = conn.prepareStatement("DELETE FROM players WHERE fullName = 'Jude Bellingham'");
-             PreparedStatement deleteClub = conn.prepareStatement("DELETE FROM clubs WHERE title = 'Liverpool'");) {
+             PreparedStatement deletePlayer = conn.prepareStatement("DELETE FROM player WHERE fullName = 'Jude Bellingham'");
+             PreparedStatement deleteClub = conn.prepareStatement("DELETE FROM club WHERE title = 'Liverpool'");) {
             deletePlayer.executeUpdate();
             deleteClub.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
