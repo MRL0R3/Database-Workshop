@@ -36,6 +36,17 @@ public class Main {
         DatabaseManager.playerViewer();
 
 
+        //🔁 Step 5: Update Records
+        DatabaseManager.updateRecords();
+
+
+        //🔍 Step 6: Select Again
+        DatabaseManager.clubViewer();
+
+        DatabaseManager.playerViewer();
+
+
+
 
     }
 }

@@ -61,10 +61,16 @@ public class DatabaseManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
 
 
+
+
+
+
+    // todo: create methods to complete the task of workshop
     public static void clubViewer() throws SQLException, ClassNotFoundException {
         Connection conn = connect();
         var st = conn.createStatement();
@@ -72,8 +78,8 @@ public class DatabaseManager {
         System.out.println("--- Clubs ---");
         while (rs.next()) {
             System.out.printf("%s | %s | %s\n", rs.getObject("id"),
-                                                rs.getString("title"),
-                                                rs.getString("manager"));
+                    rs.getString("title"),
+                    rs.getString("manager"));
         }
         System.out.println();
         rs.close();
@@ -87,8 +93,8 @@ public class DatabaseManager {
         System.out.println("--- Players ---");
         while (rs.next()) {
             System.out.printf("%s | %s | %s\n", rs.getObject("id"),
-                                                rs.getString("full_name"),
-                                                rs.getObject("club_id"));
+                    rs.getString("full_name"),
+                    rs.getObject("club_id"));
         }
         System.out.println();
         rs.close();
@@ -97,7 +103,16 @@ public class DatabaseManager {
     }
 
 
+    public static void updateRecords() {
+        try (Connection conn = connect();
+             PreparedStatement pstmt1 = conn.prepareStatement("UPDATE players SET clubId = (SELECT id FROM clubs WHERE title = 'Real Madrid') WHERE fullName = 'Alexander-Arnold'");
+             PreparedStatement pstmt2 = conn.prepareStatement("UPDATE clubs SET manager = 'Alonso' WHERE title = 'Real Madrid'");) {
+            pstmt1.executeUpdate();
+            pstmt2.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
-    // todo: create methods to complete the task of workshop
 
 }
